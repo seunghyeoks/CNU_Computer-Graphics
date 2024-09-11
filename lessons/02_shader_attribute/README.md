@@ -134,11 +134,20 @@ var positions = [ //삼각형의 2차원 좌표 정보. 현재는 RAM에 저장�
 
 1. 프래그먼트 셰이더의 파란색 색상값을 바꾸어 다른 색상으로 그려 보세요.
 
+* answer: `outColor = vec4(0.0,1.0,0.0,1.0);`를 통해 초록색으로 변경
+
 2. positions의 좌표값을 바꾸어 삼각형이 어떻게 변하는지 살펴 보세요.
+
+* answer: `positions`을 바꾸어 해결
 
 3. a_poisition은 vec4 타입인데, 이는 (x,y,z,w) 네 개의 float값으로 이루어진 구조체라는 뜻입니다. 여기에 값을 두 개만 전달했는데요 그러면 값이 어떻게 저장되는 걸까요?
 
+* answer: 나머지는 기본값이 저장될 것 같다. 
+
 4. positions 배열을 한 정점마다 값을 3개, 4개씩 전달하도록 수정해 보세요. 제대로 표시가 되려면 `vertexAttribPointer()`의 인자들을 어떻게 바꿔야 할지 생각해 보세요.
+
+* answer: positions를 열을 n개로 바꾸고, vertexAttribPointer()`의 두번째 인자 값에 n을 입력해 반영한다.
+
 5. 아래와 같은 `positions` 배열에 대해서 동일한 삼각형이 나타나도록 `vertexAttribPointer` 함수 호출을 수정해 보세요.
 
 ```js
@@ -148,6 +157,8 @@ var positions = [ //삼각형의 2차원 좌표 정보. 현재는 RAM에 저장�
     0.0, 0.5,  -0.5, 0.0// ( 0.5, -0.5) 좌표에 점 하나
 ];
 ```
+* answer: `gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 4*4, 1*4)`, 2개를 정보로 가지면서, 4개씩 읽되, 앞에 하나는 무시한다. 
+
 
 ## Useful Links
 
