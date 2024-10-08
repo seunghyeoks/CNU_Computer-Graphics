@@ -34,7 +34,6 @@ WebGL(and OpenGL)에는 이렇게 셰이더 프로그램을 작성하기 위한 
     var fragmentShaderSource = `#version 300 es
     precision highp float;
     layout(location=0) out vec4 outColor;
-
     void main() {
       outColor = vec4(0.0,0.0,1.0,1.0);
     }
