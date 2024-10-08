@@ -76,7 +76,16 @@ JS 쪽으로부터 셰이더 프로그램으로 원하는 값을 그때그때 �
     ```
     그리고 나서 JS쪽에서 offset uniform으로 값을 전달해서 결과가 어떻게 달라지는지 살펴보세요.
 
+* answer: 아래 코드를 추가해 보았고, 사각형의 위치와 크기가 변경됨
+    ```js
+    var location = gl.getUniformLocation(program, "offset"); //offset 변수 위치(location)를 참조
+    gl.uniform4f(location, 0.8, 0.3, 0.8, 1.0); //해당 location에 0.8, 0.3, 0.8, 1.0 데이터를 전달
+    ```
+
+
 2. Uniform에 값을 전달하기 위해서는 셰이더 프로그램이 활성화(바인딩)되어 있어야 합니다. 코드의 주석을 따라서 프로그램을 비활성화(언바인딩)하고 제대로 동작하는지 그렇지 않은지 확인해 보세요.
+
+* 사각형이 사라짐
 
 ## Useful Links
 
