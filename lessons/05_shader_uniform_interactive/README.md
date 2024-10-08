@@ -110,10 +110,17 @@
 ## Quiz
 
 1. `gl.getUniformLocation()`도 반드시 `drawScene()`안에서 호출되어야 할까요? 직접 확인해 보세요.
+* answer: location을 함수 밖에 정의하면 가능
 
 2. 제일 처음 페이지를 로드하면(또는 새로고침하면) 슬라이더를 움직이기 전까지 화면에 아무것도 나오지 않습니다. 이를 해결해 보세요.
+* answer: `drawScene()`을 호출해 한번 그려주면 됨
 
 3. 지난 퀴즈에서처럼, offset을 사용해 사각형의 위치를 슬라이더를 사용해 변경할 수 있도록 코드를 수정해 보세요.
+* answer: 아래처럼 offset 주소를 가져와 슬라이더 적용 및 다시 그리기
+    ```js
+        var location = gl.getUniformLocation(program, "offset"); //offset 변수 위치(location)를 참조
+        gl.uniform4f(location, blue, 0.3, 0.8, 1.0); //해당 location에 0.8, 0.3, 0.8, 1.0 데이터를 전달
+    ```
 
 ## Useful Links
 
