@@ -162,6 +162,8 @@
     console.log(gl.canvas.height);
     ```
 
+* answer: (left, right, bottom, top, near, far) 값이 들어가게 됨.
+
 ## Advanced
 
 1. HTML 캔버스의 크기는 CSS를 사용해 정의하는 것이 좋습니다. 현재 예제에서 사용하는 CSS은 `resources/webgl-tutorials.css`에 있습니다. 창의 크기를 바꾸고, 6번에서 설명한 코드를 주석처리하여 어떤 결과가 나오는지 보세요. 또한 proj 행렬이 왜 가로길이 4, 세로길이 3으로 설정되었는지 생각해 보세요.
