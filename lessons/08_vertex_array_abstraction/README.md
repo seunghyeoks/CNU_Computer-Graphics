@@ -239,7 +239,16 @@ VertexArray에 구현해둔 AddBuffer() 메소드 덕분에 우리는 각 attrib
     ];
     ```
 
+* answer: 
+```js
+    gl.enableVertexAttribArray(0); 
+    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);  // Stride를 2*4로 해도 됨
+    gl.enableVertexAttribArray(1); 
+    gl.vertexAttribPointer(1, 4, gl.FLOAT, false, 0, 2*4*4);  // Stride를 4*4로 해도 됨
+```
+
 2. 이전 강의의 코드로 돌아가 보시면, `gl.vertexAttribPointer()`의 stride로 0을 전달하고 있었습니다! 이상하죠? 다음 정점 데이터를 읽어오는데 바이트를 0만큼 이동해서 읽어오라는건데 그러면 같은 값만을 계속 읽어올텐데 실제로는 그렇지 않았죠. 그 이유에 대해 [vertexAttribPointer에 대한 레퍼런스 문서](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/vertexAttribPointer)를 읽어 보세요.
+* answer: stride는 읽어야되는 기준이 되는 바이트인데, 0일 경우에는 알아서 알아서 설정이 됨. (알아서 24 바이트로 설정 됨)
 
 
 ## Advanced
