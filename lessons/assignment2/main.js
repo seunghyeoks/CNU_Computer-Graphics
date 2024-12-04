@@ -30,7 +30,7 @@ async function main() {
 
   //--Texture Loading
   let checkerTexture = new Texture(gl);
-  checkerTexture.LoadeTextureFromImage(gl,'../../resources/uv-grid.png');
+  checkerTexture.LoadTextureFromImage(gl,'../../resources/uv-grid.png');
   
   //--Directional Light Define
   // [Assign2] Scene에는 하나의 Directional Light와 세 개의 Point Light가 있습니다.
