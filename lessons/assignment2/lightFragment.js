@@ -19,6 +19,13 @@ export default
     vec3 direction;
   };
 
+  struct PointLight
+  {
+    Light base;   
+    vec3 position;
+    float attenuationFactor;
+  };
+
   struct Material
   {
     float specularIntensity;
@@ -29,6 +36,7 @@ export default
 
   uniform sampler2D u_mainTexture;
   uniform DirectionalLight u_directionalLight; 
+  uniform PointLight u_pointLights[3]; // 포인트 라이트 3개
   uniform vec3 u_eyePosition; 
   uniform Material u_material; 
 
@@ -62,8 +70,25 @@ export default
       return CalculateLight(u_directionalLight.base, u_directionalLight.direction);
   }
 
+  vec3 CalculatePointLight(PointLight pointLight)
+  {
+      vec3 direction = v_worldPosition - pointLight.position;
+      float distance = length(direction);
+      direction = normalize(direction);
+
+      vec3 color = CalculateLight(pointLight.base, direction);
+
+      vec3 attenuatedColor = color / (pointLight.attenuationFactor * distance * distance + 0.01);
+      
+      return attenuatedColor;
+  }
+
   void main() {
     vec3 lightColor = CalculateDirectionalLight();
+
+    for(int i = 0; i < 3; i++) {
+        lightColor += CalculatePointLight(u_pointLights[i]);
+    }
 
     outColor = texture(u_mainTexture, v_texcoord) * vec4(lightColor,1.0);
   }
